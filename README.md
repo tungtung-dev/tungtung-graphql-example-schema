@@ -22,3 +22,9 @@ npm run build
 npm run start
 # go to localhost:8080/graphql
 ```
+
+## Content seeder
+If you want auto generator fake data, please run URL
+```
+http://localhost:8080/seeder
+```
