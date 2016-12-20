@@ -35,16 +35,18 @@ export async function createUser({username, password}) {
 
 export async function loginUser({username, password}) {
     let user = await User.findOne({username});
+    if(!user){
+        return {
+            success: false,
+            message: "Login error"
+        }
+    }
     if (bscrypt.compare(password, user.password)) {
         return {
             success: true,
             token: generateToken(user),
             user
         };
-    }
-    else return {
-        success: false,
-        message: "Login error"
     }
 }
 

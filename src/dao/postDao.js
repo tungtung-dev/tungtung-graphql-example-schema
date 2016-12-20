@@ -6,7 +6,7 @@ export async function getPosts(){
 }
 
 export async function getPost({_id}) {
-    let post = await Post.find({_id});
+    let post = await Post.findOne({_id});
     return post;
 }
 
