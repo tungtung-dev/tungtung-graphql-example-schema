@@ -11,7 +11,7 @@ function getTokenFromAuthorization(req) {
 export default (req, res, next) => {
     var token = getTokenFromAuthorization(req);
     if (token) {
-        userDao.loginUserToken(token, (user) => {
+        userDao.getUserByToken({token}).then((user) => {
             req.user = user;
             next();
         })

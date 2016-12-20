@@ -8,9 +8,28 @@ export async function getUsers() {
     return userLists
 }
 
-export async function getUser({userId}) {
-    let user = await User.findOne({_id: userId});
+export async function getUser({userId, token}) {
+    let user = {};
+    if (userId) {
+        user = await User.findOne({_id: userId});
+    }
+    else if (token) {
+        user = await getUserByToken({token});
+    }
     return user;
+}
+
+export function getUserByToken({token}) {
+    return new Promise((resolve) => {
+        jwt.verify(token, config.JWT_SECRET, (err, payload) => {
+            if (!err) {
+                User.findOne({_id: payload._doc._id}).then(user => {
+                    resolve(user);
+                })
+            }
+            else resolve({})
+        });
+    })
 }
 
 export async function generateToken(user) {
@@ -35,7 +54,7 @@ export async function createUser({username, password}) {
 
 export async function loginUser({username, password}) {
     let user = await User.findOne({username});
-    if(!user){
+    if (!user) {
         return {
             success: false,
             message: "Login error"
@@ -50,17 +69,23 @@ export async function loginUser({username, password}) {
     }
 }
 
-export function loginUserToken(token, callback) {
-    jwt.verify(token, config.JWT_SECRET, (err, payload) => {
-        if (!err) {
-            User.findOne({_id: payload._doc._id}).then(user => {
-                callback(user);
-            })
+export async function loginUserToken({token}) {
+    console.log(token);
+    let user = await getUserByToken({token});
+    if (!user) {
+        return {
+            success: false,
+            message: "Login error"
         }
-        else callback({})
-    });
+    }
+    return {
+        success: true,
+        token,
+        user
+    };
 }
 
+
 export default {
-    getUsers, getUser, createUser, loginUser, loginUserToken
+    getUsers, getUser, createUser, getUserByToken, loginUser, loginUserToken
 }

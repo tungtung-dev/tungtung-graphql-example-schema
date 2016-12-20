@@ -7,9 +7,12 @@ export default {
     args: {
         _id: {
             type: graphql.GraphQLString
+        },
+        token: {
+            type: graphql.GraphQLString
         }
     },
-    resolve: (userRoot, {_id}) => {
-        return userDao.getUser({userId: _id});
+    resolve: (userRoot, {_id, token}) => {
+        return userDao.getUser({userId: _id, token});
     }
 }
