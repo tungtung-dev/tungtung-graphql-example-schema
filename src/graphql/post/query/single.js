@@ -1,6 +1,6 @@
 import * as graphql from 'graphql';
 import postType from '../type';
-import {Post} from 'models';
+import {postDao} from 'dao';
 
 export default {
     type: postType,
@@ -9,8 +9,7 @@ export default {
             type: graphql.GraphQLString
         }
     },
-    resolve: async(postRoot, {_id}) => {
-        let post = Post.findOne({_id: _id});
-        return post;
+    resolve: (postRoot, params) => {
+        return postDao.getPost(params);
     }
 }

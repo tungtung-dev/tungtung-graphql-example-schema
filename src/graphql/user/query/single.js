@@ -1,6 +1,6 @@
 import * as graphql from 'graphql';
+import {userDao} from 'dao';
 import userType from '../type';
-import {User} from 'models';
 
 export default {
     type: userType,
@@ -9,8 +9,7 @@ export default {
             type: graphql.GraphQLString
         }
     },
-    resolve: async(userRoot, {_id}) => {
-        let user = User.findOne({_id: _id});
-        return user;
+    resolve: (userRoot, {_id}) => {
+        return userDao.getUser({userId: _id});
     }
 }

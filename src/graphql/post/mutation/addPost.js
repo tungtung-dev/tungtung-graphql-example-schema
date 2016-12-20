@@ -1,33 +1,24 @@
 import * as graphql from 'graphql';
-import {Post} from 'models';
+import {postDao} from 'dao';
 import postType from '../type';
-
-async function addPost({title, description, content, userId}){
-    var post = new Post({
-        title, description, content, userId
-    })
-    post = await post.save();
-    return post;
-}
 
 export default {
     type: postType,
     args: {
-        title:{
+        title: {
             type: graphql.GraphQLString
         },
-        description:{
+        description: {
             type: graphql.GraphQLString
         },
-        content:{
+        content: {
             type: graphql.GraphQLString
         },
-        userId:{
+        userId: {
             type: graphql.GraphQLString
         }
     },
-    resolve: async (root, params) => {
-        const post = await addPost(params);
-        return post;
+    resolve: (root, params) => {
+        return postDao.createPost(params)
     }
 }

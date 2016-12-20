@@ -1,11 +1,10 @@
 import * as graphql from 'graphql';
 import postType from '../type';
-import {Post} from 'models';
+import {postDao} from 'dao';
 
 export default {
     type: new graphql.GraphQLList(postType),
-    resolve: async () => {
-        let postsLists = Post.find({});
-        return postsLists;
+    resolve: () => {
+        return postDao.getPosts();
     }
 }

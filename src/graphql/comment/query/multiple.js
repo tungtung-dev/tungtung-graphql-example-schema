@@ -1,6 +1,6 @@
 import * as graphql from 'graphql';
+import {commentDao} from 'dao';
 import commnentType from '../type';
-import {Comment} from 'models';
 
 export default {
     type: new graphql.GraphQLList(commnentType),
@@ -9,8 +9,7 @@ export default {
             type: graphql.GraphQLString
         }
     },
-    resolve: async (commentRoot, {postId}) => {
-        let commentLists = Comment.find({postId});
-        return commentLists;
+    resolve: (commentRoot, {postId}) => {
+        return commentDao.getCommentsByPost({postId});
     }
 }

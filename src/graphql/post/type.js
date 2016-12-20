@@ -1,7 +1,7 @@
 import * as graphl from 'graphql';
+import {userDao, commentDao} from 'dao';
 import commentType from '../comment/type';
 import userType from '../user/type';
-import {Comment, User} from 'models';
 
 export default new graphl.GraphQLObjectType({
     name: "Post",
@@ -20,18 +20,11 @@ export default new graphl.GraphQLObjectType({
         },
         comments: {
             type: new graphl.GraphQLList(commentType),
-            resolve: async (post) => {
-                let commentLists  = await Comment.find({postId: post._id});
-                return commentLists;
-            }
+            resolve: ({_id}) => commentDao.getCommentsByPost({postId: _id})
         },
         user: {
             type: userType,
-            resolve: async (post) => {
-                console.log(post);
-                let user = await User.findOne({_id: post.userId});
-                return user;
-            }
+            resolve: ({userId}) => userDao.getUser({userId})
         }
     }
 })
