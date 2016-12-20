@@ -4,7 +4,7 @@ import userType from '../type';
 
 export default {
     type: new graphql.GraphQLList(userType),
-    resolve: () => {
+    resolve: (root, params, req) => {
         return userDao.getUsers()
     }
 }
