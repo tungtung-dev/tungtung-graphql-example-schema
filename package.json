@@ -26,6 +26,7 @@
     "graphql": "^0.8.2",
     "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.3",
+    "pagination-js": "^2.0.0",
     "redux-form": "^6.3.2"
   }
 }

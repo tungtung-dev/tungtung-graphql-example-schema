@@ -5,6 +5,7 @@ import config from './config';
 import seeder from './seeder';
 import graphQLMiddleware from './graphql/middleware';
 import {authMiddleware} from './middlewares';
+import "test-import";
 
 mongoose.connect(config.DATABASE);
 
