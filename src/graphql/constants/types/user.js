@@ -1,9 +1,11 @@
 import * as graphql from 'graphql';
 import {postField} from '../fields';
+import {UserInterface, PostInterface} from '../interfaces';
 import {postDao} from 'dao';
 
-const userType = new graphql.GraphQLObjectType({
-    name: "userType",
+const UserType = new graphql.GraphQLObjectType({
+    name: "UserType",
+    interfaces: [UserInterface],
     fields: {
         _id: {
             type: graphql.GraphQLString
@@ -13,7 +15,8 @@ const userType = new graphql.GraphQLObjectType({
         },
         posts: {
             type: new graphql.GraphQLList(new graphql.GraphQLObjectType({
-                name: "postTypeForUser",
+                name: "PostTypeForUser",
+                interfaces: [PostInterface],
                 fields: postField
             })),
             resolve: ({_id}) => {
@@ -24,7 +27,7 @@ const userType = new graphql.GraphQLObjectType({
 });
 
 const userLoginType = new graphql.GraphQLObjectType({
-    name: "userTypeLogin",
+    name: "UserTypeLogin",
     fields: {
         success: {
             type: graphql.GraphQLBoolean
@@ -36,11 +39,11 @@ const userLoginType = new graphql.GraphQLObjectType({
             type: graphql.GraphQLString
         },
         user: {
-            type: userType
+            type: UserType
         }
     }
 });
 
-export {userLoginType, userType};
+export {userLoginType, UserType};
 
-export default userType;
+export default UserType;

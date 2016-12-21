@@ -1,9 +1,11 @@
 import * as graphql from 'graphql';
 import {userDao} from 'dao';
-import userType from './user';
+import {CommentInterface} from '../interfaces';
+import UserType from './user';
 
 export default new graphql.GraphQLObjectType({
-    name: "commentType",
+    name: "CommentType",
+    interfaces: [CommentInterface],
     fields: {
         _id: {
             type: graphql.GraphQLString
@@ -13,7 +15,7 @@ export default new graphql.GraphQLObjectType({
             type: graphql.GraphQLString
         },
         user: {
-            type: userType,
+            type: UserType,
             resolve:  (commentData) => {
                 return userDao.getUser({userId: commentData.userId})
             }

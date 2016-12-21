@@ -1,11 +1,12 @@
-import postType from './post';
-import commentType from './comment';
-import userType from './user';
+import PostType from './post';
+import CommentType from './comment';
+import UserType from './user';
+import PaginationType from './pagination';
 
 export {
-    postType, commentType, userType
+    PostType, CommentType, UserType, PaginationType
 }
 
 export default {
-    postType, commentType, userType
+    PostType, CommentType, UserType, PaginationType
 }

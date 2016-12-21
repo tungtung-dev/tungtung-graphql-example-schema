@@ -2,9 +2,9 @@ import * as graphql from 'graphql';
 import {postField} from '../fields';
 
 export default new graphql.GraphQLInterfaceType({
-    name: "postInterface",
+    name: "PostInterface",
     fields: postField,
-    fieldType: (data) => {
+    resolveType: (data) => {
         return data;
     }
 })

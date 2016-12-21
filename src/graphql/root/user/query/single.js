@@ -1,9 +1,9 @@
 import * as graphql from 'graphql';
 import {userDao} from 'dao';
-import {userType} from 'graphql/constants/types';
+import {UserType} from 'graphql/constants/types';
 
 export default {
-    type: userType,
+    type: UserType,
     args: {
         _id: {
             type: graphql.GraphQLString

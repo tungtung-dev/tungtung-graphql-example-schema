@@ -1,9 +1,9 @@
 import * as graphql from 'graphql';
-import {postType} from 'graphql/constants/types';
+import {PostType} from 'graphql/constants/types';
 import {postDao} from 'dao';
 
 export default {
-    type: postType,
+    type: PostType,
     args: {
         _id: {
             type: graphql.GraphQLString
@@ -12,7 +12,7 @@ export default {
             type: graphql.GraphQLString
         }
     },
-    resolve: (postRoot, {_id}, req) => {
+    resolve: (postRoot, {_id}) => {
         return postDao.getPost({_id});
     }
 }

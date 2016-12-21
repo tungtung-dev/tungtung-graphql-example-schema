@@ -2,9 +2,9 @@ import * as graphql from 'graphql';
 import {commentField} from '../fields';
 
 export default new graphql.GraphQLInterfaceType({
-    name: "postInterface",
+    name: "CommentInterface",
     fields: commentField,
-    fieldType: (data) => {
+    resolveType: (data) => {
         return data;
     }
 })

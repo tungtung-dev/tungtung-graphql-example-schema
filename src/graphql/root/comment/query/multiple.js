@@ -1,9 +1,9 @@
 import * as graphql from 'graphql';
 import {commentDao} from 'dao';
-import {commentType} from 'graphql/constants/types';
+import {CommentType} from 'graphql/constants/types';
 
 export default {
-    type: new graphql.GraphQLList(commentType),
+    type: new graphql.GraphQLList(CommentType),
     args: {
         postId: {
             type: graphql.GraphQLString

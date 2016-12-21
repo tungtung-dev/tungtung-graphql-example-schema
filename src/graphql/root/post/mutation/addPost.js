@@ -1,9 +1,9 @@
 import * as graphql from 'graphql';
 import {postDao} from 'dao';
-import {postType} from 'graphql/constants/types';
+import {PostType} from 'graphql/constants/types';
 
 export default {
-    type: postType,
+    type: PostType,
     args: {
         title: {
             type: graphql.GraphQLString
