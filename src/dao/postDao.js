@@ -5,7 +5,7 @@ export async function getPosts() {
 }
 
 export async function getPost({_id}) {
-    return await Post.findOne({_id});
+    return await Post.findOne({_id}).populate({path: "user"});
 }
 
 export async function createPost({title, description, content, userId}) {
