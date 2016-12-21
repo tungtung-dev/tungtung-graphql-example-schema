@@ -1,0 +1,1 @@
+import postInterface from './post';

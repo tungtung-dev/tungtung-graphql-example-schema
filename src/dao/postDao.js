@@ -5,6 +5,11 @@ export async function getPosts(){
     return postLists;
 }
 
+export async function getPostsByUser({userId}){
+    let postLists = await Post.find({userId: userId});
+    return postLists;
+}
+
 export async function getPost({_id}) {
     let post = await Post.findOne({_id});
     return post;
@@ -20,6 +25,7 @@ export async function createPost({title, description, content, userId}){
 
 export default {
     getPosts,
+    getPostsByUser,
     getPost,
     createPost
 }
