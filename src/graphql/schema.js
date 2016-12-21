@@ -13,7 +13,7 @@ var queries = {
 var mutations = {
     ...Post.Mutation,
     ...User.Mutation
-}
+};
 
 export default new graphql.GraphQLSchema({
     query: new graphql.GraphQLObjectType({

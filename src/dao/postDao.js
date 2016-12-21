@@ -1,21 +1,18 @@
 import {Post} from 'models';
 
-export async function getPosts(){
-    let postLists = await Post.find({});
-    return postLists;
+export async function getPosts() {
+    return await Post.find({});
 }
 
 export async function getPost({_id}) {
-    let post = await Post.findOne({_id});
-    return post;
+    return await Post.findOne({_id});
 }
 
-export async function createPost({title, description, content, userId}){
+export async function createPost({title, description, content, userId}) {
     var post = new Post({
         title, description, content, userId
-    })
-    post = await post.save();
-    return post;
+    });
+    return await post.save();
 }
 
 export default {
