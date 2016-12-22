@@ -18,7 +18,7 @@ export default new graphql.GraphQLObjectType({
         },
         user: {
             type: UserType,
-            resolve: ({userId}) => userDao.getUser({userId})
+            resolve: ({userId}) => userId
         }
     }
 })

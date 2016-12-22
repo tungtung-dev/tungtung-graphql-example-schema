@@ -18,7 +18,10 @@ export default {
             type: graphql.GraphQLString
         }
     },
-    resolve: (root, params) => {
-        return postDao.createPost(params)
+    resolve: (root, params, {user}) => {
+        return postDao.createPost({
+            ...params,
+            userId: user._id
+        })
     }
 }

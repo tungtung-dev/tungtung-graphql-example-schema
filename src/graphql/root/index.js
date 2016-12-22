@@ -10,7 +10,8 @@ const Queries = {
 
 const Mutations = {
     ...Post.Mutation,
-    ...User.Mutation
+    ...User.Mutation,
+    ...Comment.Mutation
 }
 
 export {Queries, Mutations}

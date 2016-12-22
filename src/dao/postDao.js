@@ -8,7 +8,11 @@ export async function getTotalPosts(query = {}){
 export async function getPosts(query = {}, {page, itemPerPage}){
     let totalItem = getTotalPosts(query);
     let pagination = (new Pagination({page, itemPerPage}, totalItem)).getPagination();
-    const data = await Post.find(query).skip(pagination.minIndex).limit(pagination.itemPerPage);
+    const data = await Post.find(query)
+        .sort({_id: -1})
+        .skip(pagination.minIndex)
+        .limit(pagination.itemPerPage)
+        .populate({path: "userId"});
     return {
         data,
         pagination
@@ -21,7 +25,7 @@ export async function getPostsByUser({userId}){
 }
 
 export async function getPost({_id}) {
-    let post = await Post.findOne({_id});
+    let post = await Post.findOne({_id}).populate({path: "userId"});
     return post;
 }
 
@@ -33,10 +37,19 @@ export async function createPost({title, description, content, userId}){
     return post;
 }
 
+export async function updatePost({_id, title, description, content}){
+    return await Post.findOneAndUpdate({_id}, {$set: {
+        title,
+        description,
+        content
+    }});
+}
+
 export default {
     getTotalPosts,
     getPosts,
     getPostsByUser,
     getPost,
-    createPost
+    createPost,
+    updatePost
 }

@@ -5,7 +5,8 @@ async function addUsers() {
     var users = [];
     for (let i = 1; i <= 5; i++) {
         let user = new User({
-            username: casual.username
+            username: casual.username,
+            password: '123456'
         });
         user = await user.save();
         users.push(user);
