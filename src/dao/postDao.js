@@ -1,13 +1,15 @@
-import {Post} from 'models';
-import Pagination from 'pagination-js';
+import {Post} from "models";
+import Pagination from "pagination-js";
 
-export async function getTotalPosts(query = {}){
+export async function getTotalPosts(query = {}) {
     return await Post.count(query);
 }
 
-export async function getPosts(query = {}, {page, itemPerPage}){
-    let totalItem = getTotalPosts(query);
+export async function getPosts(query = {}, {page, itemPerPage}) {
+    let totalItem = await getTotalPosts(query);
+    console.log(`page ${page} itemPerPage ${itemPerPage} totalItem ${totalItem}`);
     let pagination = (new Pagination({page, itemPerPage}, totalItem)).getPagination();
+    console.log(pagination);
     const data = await Post.find(query).skip(pagination.minIndex).limit(pagination.itemPerPage);
     return {
         data,
@@ -15,7 +17,7 @@ export async function getPosts(query = {}, {page, itemPerPage}){
     }
 }
 
-export async function getPostsByUser({userId}){
+export async function getPostsByUser({userId}) {
     let postLists = await Post.find({userId: userId});
     return postLists;
 }
