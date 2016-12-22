@@ -10,8 +10,17 @@ const Queries = {
 
 const Mutations = {
     ...Post.Mutation,
-    ...User.Mutation
+    ...User.Mutation,
+    ...Comment.Mutation
 }
 
-export {Queries, Mutations}
-export default {Queries, Mutations}
+const Subscription = {
+    ...Comment.Subscription
+}
+
+const SubscriptionEvent = {
+    ...Comment.SubscriptionEvent
+}
+
+export {Queries, Mutations, Subscription, SubscriptionEvent}
+export default {Queries, Mutations, Subscription, SubscriptionEvent}

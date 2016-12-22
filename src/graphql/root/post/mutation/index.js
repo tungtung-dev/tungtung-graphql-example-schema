@@ -1,4 +1,5 @@
-import addPost from './addPost';
+import createPost from './createPost';
+import updatePost from './updatePost';
 
-export {addPost}
-export default {addPost}
+export {createPost, updatePost}
+export default {createPost, updatePost}

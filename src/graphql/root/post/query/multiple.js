@@ -13,7 +13,7 @@ export default {
             type: graphql.GraphQLInt
         }
     },
-    resolve: async (postsRoot, {itemPerPage = 10, page = 1}) => {
+    resolve: (postsRoot, {itemPerPage = 10, page = 1}) => {
         return postDao.getPosts({}, {itemPerPage, page});
     }
 }
