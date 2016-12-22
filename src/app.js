@@ -29,8 +29,9 @@ app.get('/', (req, res) => {
 app.use('/seeder', seeder);
 app.use('/graphql', graphQLMiddleware)
 
-app.listen(config.PORT_START, () => {
-    console.log('listening at port ' + config.PORT_START);
+var port = process.env.PORT || config.PORT_START;
+app.listen(port, () => {
+    console.log('listening at port ' + port);
 })
 
 
@@ -42,8 +43,7 @@ var socketApp = createServer((req, res) => {
     res.end();
 });
 
-var port = process.env.PORT || config.PORT_START;
-socketApp.listen(port, () => console.log( // eslint-disable-line no-console
+socketApp.listen(8081, () => console.log( // eslint-disable-line no-console
     `Websocket Server is now running on http://localhost:8081`
 ));
 
