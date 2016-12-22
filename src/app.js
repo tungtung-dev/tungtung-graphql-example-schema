@@ -31,23 +31,21 @@ app.get('/', (req, res) => {
 app.use('/seeder', seeder);
 app.use('/graphql', graphQLMiddleware)
 
-var port = process.env.PORT || config.PORT_START;
-app.listen(port, () => {
-    console.log('listening at port ' + port);
-})
 
 
 /**
  * Create Websocket Server
  */
-var socketApp = createServer((req, res) => {
-    res.writeHead(404);
-    res.end();
-});
+var webSocketWithApp = createServer(app);
 
-socketApp.listen(8081, () => console.log( // eslint-disable-line no-console
-    `Websocket Server is now running on http://localhost:8081`
-));
+// socketApp.listen(8081, () => console.log( // eslint-disable-line no-console
+//     `Websocket Server is now running on http://localhost:8081`
+// ));
+var port = process.env.PORT || config.PORT_START;
+webSocketWithApp.listen(port, () => {
+    console.log('Listen at port ' + port);
+    console.log('Socket at port ' + port);
+})
 
 /**
  * Connect server with GraphQL Schema
@@ -57,4 +55,4 @@ const socketServer = new SubscriptionServer({
     onSubscribe: (msg, params) => {
         return Object.assign({}, params, {});
     }
-}, socketApp);
+}, webSocketWithApp);
