@@ -1,6 +1,8 @@
 import * as graphql from 'graphql';
 
-import {Queries, Mutations, Subscription} from './root';
+import {Queries, Mutations, Subscription, SubscriptionEvent} from './root';
+
+export {Queries, Mutations, Subscription, SubscriptionEvent}
 
 export default new graphql.GraphQLSchema({
     query: new graphql.GraphQLObjectType({

@@ -18,5 +18,9 @@ const Subscription = {
     ...Comment.Subscription
 }
 
-export {Queries, Mutations, Subscription}
-export default {Queries, Mutations, Subscription}
+const SubscriptionEvent = {
+    ...Comment.SubscriptionEvent
+}
+
+export {Queries, Mutations, Subscription, SubscriptionEvent}
+export default {Queries, Mutations, Subscription, SubscriptionEvent}

@@ -1,8 +1,6 @@
 import * as graphql from 'graphql'
 import {CommentType} from 'graphql/constants/types';
 
-
-
 export default  {
     type: CommentType,
     args: {
