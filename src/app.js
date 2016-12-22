@@ -42,7 +42,8 @@ var socketApp = createServer((req, res) => {
     res.end();
 });
 
-socketApp.listen(8081, () => console.log( // eslint-disable-line no-console
+var port = process.env.PORT || config.PORT_START;
+socketApp.listen(port, () => console.log( // eslint-disable-line no-console
     `Websocket Server is now running on http://localhost:8081`
 ));
 
