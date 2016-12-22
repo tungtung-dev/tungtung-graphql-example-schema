@@ -1,6 +1,6 @@
 import * as graphql from 'graphql';
 
-import {Queries, Mutations} from './root';
+import {Queries, Mutations, Subscription} from './root';
 
 export default new graphql.GraphQLSchema({
     query: new graphql.GraphQLObjectType({
@@ -10,5 +10,9 @@ export default new graphql.GraphQLSchema({
     mutation: new graphql.GraphQLObjectType({
         name: "Mutation",
         fields: Mutations
+    }),
+    subscription: new graphql.GraphQLObjectType({
+        name: "Subscription",
+        fields: Subscription
     })
 })

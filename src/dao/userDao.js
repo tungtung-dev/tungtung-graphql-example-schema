@@ -70,7 +70,6 @@ export async function loginUser({username, password}) {
 }
 
 export async function loginUserToken({token}) {
-    console.log(token);
     let user = await getUserByToken({token});
     if (!user) {
         return {

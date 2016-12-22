@@ -12,10 +12,14 @@ export default {
             type: graphql.GraphQLString
         }
     },
-    resolve: (commentRoot, params, {user}) => {
-        return commentDao.createComment({
+    resolve: async (commentRoot, params, {user, pubsub}) => {
+        const comment = await commentDao.createComment({
             ...params,
             userId: user._id
-        })
+        });
+        if(pubsub){
+            pubsub.publish('onCreateComment' ,comment);
+        }
+        return comment;
     }
 }

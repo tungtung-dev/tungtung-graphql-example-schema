@@ -14,5 +14,9 @@ const Mutations = {
     ...Comment.Mutation
 }
 
-export {Queries, Mutations}
-export default {Queries, Mutations}
+const Subscription = {
+    ...Comment.Subscription
+}
+
+export {Queries, Mutations, Subscription}
+export default {Queries, Mutations, Subscription}
