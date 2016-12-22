@@ -10,6 +10,7 @@ import seeder from './seeder';
 
 
 const databasePath = process.env.NODE_HEROKU ? config.HEROKU_DATABASE : config.DATABASE
+console.log(databasePath);
 mongoose.connect(databasePath);
 
 var app = express();
