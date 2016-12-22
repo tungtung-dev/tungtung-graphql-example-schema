@@ -1,7 +1,7 @@
 {
   "name": "tungtung-graphql",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bootstrap.js",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,5 +31,8 @@
     "pagination-js": "^2.0.0",
     "redux-form": "^6.3.2",
     "subscriptions-transport-ws": "^0.3.1"
+  },
+  "engines": {
+    "node": "6.0.0"
   }
 }
