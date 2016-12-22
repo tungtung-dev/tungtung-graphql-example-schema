@@ -8,8 +8,9 @@ import {authMiddleware, accessMiddleware, corsMiddleware, pubsubMiddleware} from
 import config from './config';
 import seeder from './seeder';
 
-mongoose.connect(config.DATABASE);
 
+const databasePath = process.env.NODE_HEROKU ? config.HEROKU_DATABASE : config.DATABASE
+mongoose.connect(databasePath);
 
 var app = express();
 
