@@ -2,7 +2,8 @@
 Small examples, best pratices for Node.js & graphQL
 
 ## Heroku App
-(https://tungtung-graphql.herokuapp.com)[https://tungtung-graphql.herokuapp.com]
+API: https://tungtung-graphql.herokuapp.com
+GraphQLi: https://tungtung-graphql.herokuapp.com/graphql
 
 ## Installation
 
