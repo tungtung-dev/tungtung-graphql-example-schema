@@ -24,13 +24,11 @@ app.use(authMiddleware);
 app.use(pubsubMiddleware(pubsub))
 
 app.get('/', (req, res) => {
-    res.json({msg: 'Welcome GraphQL Demo'});
+    res.json({msg: 'Welcome GraphQL Demo, please access to https://tungtung-apollo.herokuapp.com'});
 })
 
 app.use('/seeder', seeder);
 app.use('/graphql', graphQLMiddleware)
-
-
 
 /**
  * Create Websocket Server

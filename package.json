@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir dist",
     "dev": "NODE_PATH=./src nodemon --exec babel-node src/app.js",
-    "start": "NODE_HEROKU=true npm run build && NODE_HEROKU=true NODE_PATH=./dist node bootstrap.js",
+    "start": "npm run build && NODE_PATH=./dist node bootstrap.js",
     "only-start": "NODE_PATH=./dist node bootstrap.js"
   },
   "dependencies": {

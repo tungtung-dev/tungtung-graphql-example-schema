@@ -1,6 +1,9 @@
 ## Examples blog post with graphQL
 Small examples, best pratices for Node.js & graphQL
 
+## Heroku App
+(https://tungtung-graphql.herokuapp.com)[https://tungtung-graphql.herokuapp.com]
+
 ## Installation
 
 ```
